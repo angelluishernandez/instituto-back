@@ -10,7 +10,7 @@ const noticiaSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
-		foto: {
+		imgUrl: {
 			type: String,
 		},
 		pieDeFoto: String,

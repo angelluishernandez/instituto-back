@@ -12,7 +12,7 @@ module.exports.createNoticias = (req, res, next) => {
 	const noticia = new Noticia({
 		titulo: req.body.titulo,
 		descripcion: req.body.descripcion,
-		foto: req.body.foto,
+		imgUrl: req.body.imgUrl,
 		texto: req.body.texto,
 		etiquetas: req.body.etiquetas,
 	});

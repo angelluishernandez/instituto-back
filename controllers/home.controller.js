@@ -9,14 +9,6 @@ module.exports.getCarousel = (req, res, next) => {
 		.catch((error) => console.log(error));
 };
 
-module.exports.getGallery = (req, res, next) => {
-	GalleryItems.find()
-		.then((response) => {
-			res.status(200).json(response);
-		})
-		.catch((error) => console.log(error));
-};
-
 module.exports.addCarouselItem = (req, res, next) => {
 	const { imgUrl, description } = req.body.carouselItem;
 
@@ -33,8 +25,16 @@ module.exports.addCarouselItem = (req, res, next) => {
 		.catch((error) => console.log(error));
 };
 
+module.exports.getGallery = (req, res, next) => {
+	GalleryItems.find()
+		.then((response) => {
+			res.status(200).json(response);
+		})
+		.catch((error) => console.log(error));
+};
+
 module.exports.addGalleryItem = (req, res, next) => {
-	const { imgUrl, description } = req.body;
+	const { imgUrl, description } = req.body.galleryItem;
 
 	const galleryItem = new GalleryItems({
 		imgUrl,
