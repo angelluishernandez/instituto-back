@@ -1,4 +1,5 @@
 const User = require("../models/user.model");
+const createError = require("http-errors");
 
 //LIST USUARIOS
 
@@ -18,10 +19,34 @@ module.exports.findUserById = (req, res, next) => {
 		.catch((error) => console.log(error));
 };
 
+// CREATE USER
+
+module.exports.createUser = (req, res, next) => {
+	const { nombre, email, tipo, telefono, password, departamento } = req.body;
+	console.log(req.body);
+	const user = new User({
+		nombre,
+		email,
+		tipo,
+		telefono,
+		password,
+		departamento,
+	});
+
+	user
+		.save()
+		.then((user) => {
+			console.log(user);
+			res.status(201).json(user);
+		})
+		.catch((error) => console.log(error));
+};
+
 // USER LOGIN
 
 module.exports.doLogin = (req, res, next) => {
 	const { email, password } = req.body;
+	console.log(email, password);
 
 	if (!email || !password) {
 		res.json("El usuario o el password son incorrectos");

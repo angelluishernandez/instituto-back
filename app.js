@@ -1,16 +1,20 @@
 require("dotenv").config();
 
-const path = require("path");
-const express = require("express");
 const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
 const logger = require("morgan");
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const cors = require("./config/cors.config");
 const session = require("./config/session.config");
-const passportConfig = require("./config/passport.config");
+const cors = require("./config/cors.config");
+const bodyParser = require("body-parser");
 
+/**
+ * DB config
+ */
+require("./config/db.config");
+const passportConfig = require("./config/passport.config");
 /*
 
 Configure express
@@ -59,20 +63,24 @@ Error handler
 
 */
 
+// error handler
 app.use(function (error, req, res, next) {
+	console.error(error);
+
 	res.status(error.status || 500);
 
 	const data = {};
 
 	if (error instanceof mongoose.Error.ValidationError) {
 		res.status(400);
-		for (field of Object.keys(errors.errors)) {
-			error.errors[field] = error.errors[filed].message;
+		for (field of Object.keys(error.errors)) {
+			error.errors[field] = error.errors[field].message;
 		}
 		data.errors = error.errors;
 	} else if (error instanceof mongoose.Error.CastError) {
 		error = createError(404, "Resource not found");
 	}
+
 	data.message = error.message;
 	res.json(data);
 });

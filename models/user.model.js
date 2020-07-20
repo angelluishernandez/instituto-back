@@ -21,20 +21,43 @@ const userSchema = new mongoose.Schema(
 		departamento: {
 			type: String,
 		},
+		password: {
+			type: String,
+			required: [true, "Password is required"],
+			minlength: [8, "Password must be at least 8 characters long"],
+		},
 		foto: {
 			type: String,
 		},
 		telefono: {
 			type: String,
 		},
-		isAdmin: {
-			type: Boolean,
+
+		tipo: {
+			type: String,
+			enum: ["alumno", "profesor", "admin"],
 			required: true,
-			default: false,
 		},
 	},
 	{ timestamps: true }
 );
+
+userSchema.pre("save", function (next) {
+	const user = this;
+	if (user.isModified("password")) {
+		bcrypt
+			.genSalt(SALT_WORK_FACTOR)
+			.then((salt) => {
+				return bcrypt.hash(user.password, salt).then((hash) => {
+					user.password = hash;
+					next();
+				});
+			})
+			.catch((error) => next(error));
+	} else {
+		next();
+	}
+});
 
 userSchema.methods.checkPassword = function (password) {
 	return bcrypt.compare(password, this.password);
