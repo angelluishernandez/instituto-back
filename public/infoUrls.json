@@ -1,14 +1,19 @@
-{
-	"proyectoEducativo": {
+[
+	{
 		"url": "http://www.fundacionjosemariadellanos.es/images/imagenes/PDF/ProectoEducativo_CES_Y_FP_1%C2%BA_DE_MAYO_20-21.pdf",
 		"titulo": "Descargar PDF Proyecto Educativo de centro C.E.S. y F.P. 1º de Mayo"
 	},
-	"planConvivencia": {
+	{
 		"url": "http://www.fundacionjosemariadellanos.es/images/imagenes/PDF/PLAN_Y_NORMAS_DE_CONVIVENCIA.pdf",
 		"titulo": "Plan y normas de convivencia"
 	},
-	"reglamento": {
+	{
 		"url": "http://www.fundacionjosemariadellanos.es/images/imagenes/PDF/REGLAMENTO_DE_R%C3%89GIMEN_INTERIOR.pdf",
 		"titulo": "Reglamento de régimen interno"
+	},
+	{
+		"imgUrl": "http://www.fundacionjosemariadellanos.es/images/imagenes/Formacion/ofertaformativa2020-21.jpg",
+		"titulo": "Oferta formativa",
+		"img": true
 	}
-}
+]

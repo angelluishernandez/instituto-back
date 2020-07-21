@@ -1,0 +1,17 @@
+[
+	{
+		"id": "calendario",
+		"nombre": "Calendario escolar",
+		"url": "http://www.fundacionjosemariadellanos.es/images/imagenes/PDF/HORARIOS/Calendario1.jpg"
+	},
+	{
+		"id": "ESO",
+		"nombre": "Horario Grupos E.S.O.",
+		"url": "http://www.fundacionjosemariadellanos.es/images/imagenes/PDF/HORARIOS/HORARIOS_GRUPOS_ESO_19-20.pdf"
+	},
+	{
+		"id": "FP",
+		"nombre": "HORARIOS FPB Y CFGM 2019-2020",
+		"url": "http://www.fundacionjosemariadellanos.es/images/imagenes/PDF/HORARIOS/HORARIOS_GRUPOS_FPB_CFGM_1920.pdf"
+	}
+]
